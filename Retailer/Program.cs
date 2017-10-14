@@ -8,7 +8,7 @@ namespace Retailer
     class RetailerProgram
     {
         static Object lockObject = new Object();
-        static int orderCount = 1;
+        static int orderNumber = 1;
         //private static int timeoutInterval = 30000;
 
         static void Main(string[] args)
@@ -19,12 +19,12 @@ namespace Retailer
                     Console.WriteLine(message.ProductName + " requested by " + message.ReplyToCustomer);
                     OrderRequestMessage requestMessage = new OrderRequestMessage
 					{
-						OrderId = orderCount,
+						OrderId = orderNumber,
 						ProductId = 1,
 						Country = "DK",
-                        ReplyToRetailer = message.ReplyToCustomer + orderCount
+                        ReplyToRetailer = message.ReplyToCustomer + orderNumber
 					};
-                    orderCount++;
+                    orderNumber++;
 					bus.Publish<OrderRequestMessage>(requestMessage);
 					Console.WriteLine("Order request message published");
 
