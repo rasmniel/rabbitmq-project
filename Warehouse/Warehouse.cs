@@ -34,19 +34,18 @@ namespace Warehouse
                     OrderResponse replyMessage = getOrderResponse(message);
                     bus.Send(message.Sender, replyMessage);
                 });
-            }
 
-            using (IAdvancedBus abus = RabbitHutch.CreateBus("host=localhost;persistentMessages=false").Advanced)
-            {
-                var queue = abus.QueueDeclare("WarehouseRequests");
-                abus.Consume<OrderRequest>(queue, (msg, info) =>
+                using (IAdvancedBus abus = RabbitHutch.CreateBus("host=localhost;persistentMessages=false").Advanced)
                 {
-                    Console.WriteLine("Warehouse received OrderResponse" + msg.Body);
-                });
+                    var queue = abus.QueueDeclare("WarehouseRequests");
+                    abus.Consume<OrderRequest>(queue, (msg, info) =>
+                    {
+                        Console.WriteLine("Warehouse received OrderResponse" + msg.Body);
+                    });
+                    Console.WriteLine("Listening for order requests\n");
+                    Console.ReadLine();
+                }
             }
-
-            Console.WriteLine("Listening for order requests\n");
-            Console.ReadLine();
         }
 
         private OrderResponse getOrderResponse(OrderRequest message)

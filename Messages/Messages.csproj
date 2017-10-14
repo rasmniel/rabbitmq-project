@@ -4,6 +4,12 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <CheckForOverflowUnderflow></CheckForOverflowUnderflow>
+    <LangVersion>Default</LangVersion>
+    <NoStdLib></NoStdLib>
+    <PlatformTarget>anycpu</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Remove="OrderReplyMessage.cs" />
     <Compile Remove="ProductReplyMessage.cs" />

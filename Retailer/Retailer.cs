@@ -43,6 +43,7 @@ namespace Retailer
                                 IExchange exchange = abus.ExchangeDeclare("WarehouseRequests.Fanout", ExchangeType.Fanout);
                                 string routingKey = "breadcast";
                                 abus.Bind(exchange, queue, routingKey);
+
                                 IMessage<OrderRequest> request = new Message<OrderRequest>(requestMessage);
                                 request.Properties.ReplyTo = "WarehouseRequests";
                                 abus.Publish<OrderRequest>(exchange, routingKey, false, request);

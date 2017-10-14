@@ -15,4 +15,7 @@
     <ProjectReference Include="..\Catalogue\Catalogue.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Product.cs" />
+  </ItemGroup>
 </Project>
