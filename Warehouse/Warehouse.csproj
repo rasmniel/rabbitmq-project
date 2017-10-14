@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Messages\Messages.csproj" />
+    <ProjectReference Include="..\Catalogue\Catalogue.csproj" />
   </ItemGroup>
 
 </Project>

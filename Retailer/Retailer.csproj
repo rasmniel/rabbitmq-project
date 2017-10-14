@@ -7,10 +7,12 @@
 
   <ItemGroup>
     <PackageReference Include="EasyNetQ" Version="2.1.0" />
+    <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Messages\Messages.csproj" />
+    <ProjectReference Include="..\Catalogue\Catalogue.csproj" />
   </ItemGroup>
 
 </Project>

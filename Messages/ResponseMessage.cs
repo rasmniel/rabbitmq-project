@@ -1,10 +1,15 @@
-﻿using System;
-namespace Messages
+﻿namespace Messages
 {
-    public class ResponseMessage
+    public class ProductResponse
     {
-        public ResponseMessage()
-        {
-        }
+        public int OrderId { get; set; }
+        public int DaysForDelivery { get; set; }
+        public decimal ShippingCharge { get; set; }
+    }
+
+    public class OrderResponse : ProductResponse
+    {
+        public int WarehouseId { get; set; }
+        public int Stock { get; set; }
     }
 }
