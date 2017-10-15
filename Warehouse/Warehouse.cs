@@ -35,16 +35,14 @@ namespace Warehouse
                     bus.Send(message.Sender, replyMessage);
                 });
 
-                using (IAdvancedBus abus = RabbitHutch.CreateBus("host=localhost;persistentMessages=false").Advanced)
+                bus.Subscribe<OrderRequest>("warehouseid_" + country, (message) =>
                 {
-                    var queue = abus.QueueDeclare("WarehouseRequests");
-                    abus.Consume<OrderRequest>(queue, (msg, info) =>
-                    {
-                        Console.WriteLine("Warehouse received OrderResponse" + msg.Body);
-                    });
-                    Console.WriteLine("Listening for order requests\n");
-                    Console.ReadLine();
-                }
+                    OrderResponse replyMessage = getOrderResponse(message);
+					bus.Send("order_response", replyMessage);
+                });
+
+                Console.WriteLine("Listening for order requests\n");
+                Console.ReadLine();
             }
         }
 

@@ -30,24 +30,26 @@ namespace Retailer
                     {
                         if (response.Stock > 0)
                         {
-							ProductResponse responseMessage = getProductResponse(response);
+                            ProductResponse responseMessage = getProductResponse(response);
                             Console.WriteLine("Sending product info to " + message.Sender);
                             bus.Send(message.Sender, responseMessage);
                         }
                         else
                         {
-							Console.WriteLine("No stock for " + message.Product);
-                            using (IAdvancedBus abus = RabbitHutch.CreateBus("host=localhost;persistentMessages=false").Advanced)
-                            {
-                                IQueue queue = abus.QueueDeclare("WarehouseRequests");
-                                IExchange exchange = abus.ExchangeDeclare("WarehouseRequests.Fanout", ExchangeType.Fanout);
-                                string routingKey = "breadcast";
-                                abus.Bind(exchange, queue, routingKey);
+                            Console.WriteLine("No stock for " + message.Product);
+                            bus.Publish(requestMessage);
+                        }
+                    });
 
-                                IMessage<OrderRequest> request = new Message<OrderRequest>(requestMessage);
-                                request.Properties.ReplyTo = "WarehouseRequests";
-                                abus.Publish<OrderRequest>(exchange, routingKey, false, request);
-                            }
+                    bool foundStock = false;
+                    bus.Receive<OrderResponse>("order_response", (response) =>
+                    {
+                        if (!foundStock && response.Stock > 0)
+                        {
+                            Console.WriteLine("Received product with stock");
+                            foundStock = true;
+                            ProductResponse product = getProductResponse(response);
+                            bus.Send(message.Sender, product);
                         }
                     });
                 });

@@ -47,9 +47,11 @@ namespace Customer
         {
             lock (this)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Order Id: " + message.OrderId);
                 Console.WriteLine("Days for delivery: " + message.DaysForDelivery);
                 Console.WriteLine("Shipping charge: " + message.ShippingCharge);
+                Console.ResetColor();
             }
         }
     }
