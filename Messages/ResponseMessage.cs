@@ -11,5 +11,6 @@
     {
         public int WarehouseId { get; set; }
         public int Stock { get; set; }
+        public decimal ProductPrice { get; set; }
     }
 }
