@@ -13,6 +13,10 @@ namespace Warehouse
         private string country;
         private ProductCatalogue catalogue;
 
+        private const int LocalShipping = 5;
+        private const int LocalDeliveryTime = 2;
+		private const int RemoteShipping = 10;
+        private const int RemoteDeliveryTime = 10;
         private const int BaseStock = 10;
 
         public Warehouse(int id, string country)
@@ -46,22 +50,24 @@ namespace Warehouse
             }
         }
 
-        private OrderResponse getOrderResponse(OrderRequest message)
+    private OrderResponse getOrderResponse(OrderRequest message)
+    {
+		Product product = catalogue.getProductById(message.ProductId);
+
+        bool isLocal = country == message.Country;
+        int daysForDelivery = isLocal ? LocalDeliveryTime : RemoteDeliveryTime;
+        decimal shippingCharge = isLocal ? LocalShipping : RemoteShipping;
+
+        return new OrderResponse()
         {
-            int daysForDelivery = country == message.Country ? 2 : 10;
-            decimal shippingCharge = country == message.Country ? 5 : 10;
-
-            Product requestedProduct = catalogue.getProductById(message.ProductId);
-
-            return new OrderResponse()
-            {
-                WarehouseId = id,
-                OrderId = message.OrderId,
-                Stock = requestedProduct.Stock,
-                DaysForDelivery = daysForDelivery,
-                ShippingCharge = shippingCharge
-            };
-        }
+            WarehouseId = id,
+            OrderId = message.OrderId,
+            Stock = product.Stock,
+            ProductPrice = product.Price,
+            DaysForDelivery = daysForDelivery,
+            ShippingCharge = shippingCharge
+        };
+    }
 
         private void handleOrderRequest(OrderRequest message)
         {
