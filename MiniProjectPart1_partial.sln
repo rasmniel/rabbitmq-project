@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Messages\Messages.csproj", "{255C61EF-C53D-4BD3-8CDF-C020361777BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messages", "Messages\Messages.csproj", "{255C61EF-C53D-4BD3-8CDF-C020361777BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retailer", "Retailer\Retailer.csproj", "{8CC2764A-5102-4F72-B044-32012063CEB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Retailer", "Retailer\Retailer.csproj", "{8CC2764A-5102-4F72-B044-32012063CEB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer", "Customer\Customer.csproj", "{D73DAB34-B471-40FB-9435-61B05A6CEA14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customer", "Customer\Customer.csproj", "{D73DAB34-B471-40FB-9435-61B05A6CEA14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse", "Warehouse\Warehouse.csproj", "{43C983E4-E25C-4AAB-A76E-3C1BCC1A444C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Warehouse", "Warehouse\Warehouse.csproj", "{43C983E4-E25C-4AAB-A76E-3C1BCC1A444C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalogue", "Catalogue\Catalogue.csproj", "{E9C3D735-8ACB-4161-BC57-4CDDABA328D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalogue", "Catalogue\Catalogue.csproj", "{E9C3D735-8ACB-4161-BC57-4CDDABA328D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,7 +20,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{255C61EF-C53D-4BD3-8CDF-C020361777BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{255C61EF-C53D-4BD3-8CDF-C020361777BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{255C61EF-C53D-4BD3-8CDF-C020361777BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{255C61EF-C53D-4BD3-8CDF-C020361777BE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CC2764A-5102-4F72-B044-32012063CEB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,7 +35,6 @@ Global
 		{43C983E4-E25C-4AAB-A76E-3C1BCC1A444C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43C983E4-E25C-4AAB-A76E-3C1BCC1A444C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E9C3D735-8ACB-4161-BC57-4CDDABA328D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9C3D735-8ACB-4161-BC57-4CDDABA328D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9C3D735-8ACB-4161-BC57-4CDDABA328D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9C3D735-8ACB-4161-BC57-4CDDABA328D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
